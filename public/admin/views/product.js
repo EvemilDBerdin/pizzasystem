@@ -10,14 +10,14 @@ class product {
                         </ol>
                     </div>
                     <div class="col-md-7 align-self-center text-right d-none d-md-block">
-                        <button type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i> Create New</button>
+                        <button type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i>Add Product</button>
                     </div> 
                 </div > 
             <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Data Export</h4>
+                        <h4 class="card-title">Product</h4>
                         <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
                         <div class="table-responsive m-t-40">
                             <table id="example23"
