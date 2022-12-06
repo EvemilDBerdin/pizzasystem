@@ -53,3 +53,6 @@ document.querySelector('.adminlogoutnavigationbar').addEventListener('click', ()
         }  
       })
 })
+
+let url = window.location.href
+console.log(url)
