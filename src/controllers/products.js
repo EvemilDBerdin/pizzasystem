@@ -1,72 +1,70 @@
-const Users = require('../models/users');
+const Products = require('../models/products')
 
 exports.get = async (req, res, next) => {
     try{
-        const [getUsers] = await Users.get();
-        res.status(200).json(getUsers);
+        const [getProducts] = await Products.get()
+        res.status(200).json(getProducts)
     } 
     catch (err){
         if(!err.statusCode){
-            err.statusCode = 500;
+            err.statusCode = 500
         }
-        next(err);
+        next(err)
     }
-};
+}
 exports.getId = async (req, res, next) => {
     try{
-        const [getIdUsers] = await Users.getId(req.params.id);
-        res.status(200).json(getIdUsers);
+        const [getIdProducts] = await Products.getId(req.params.id)
+        res.status(200).json(getIdProducts)
     } 
     catch (err){
         if(!err.statusCode){
-            err.statusCode = 500;
+            err.statusCode = 500
         }
-        next(err);
+        next(err)
     }
-};
+}
 // exports.post = async (req, res, next) => {
 //     try{
-//         const [postUsers] = await Users.post(req.body);
+//         const [postProducts] = await Products.post(req.body)
 //         res.status(201).json({
 //             "message": "User added sucessfully."
-//         });
+//         })
 //     } 
 //     catch (err){
 //         if(!err.statusCode){
-//             err.statusCode = 500;
+//             err.statusCode = 500
 //         }
-//         next(err);
+//         next(err)
 //     }
-// };
+// }
 
 // exports.update = async (req, res, next) => {
 //     try{
-//         const [updateUsers] = await Users.update(req.body);
+//         const [updateProducts] = await Products.update(req.body)
 //         res.status(200).json({
 //             "message": "User updated sucessfully."
-//         });
+//         })
 //     } 
 //     catch (err){
 //         if(!err.statusCode){
-//             err.statusCode = 500;
+//             err.statusCode = 500
 //         }
-//         next(err);
+//         next(err)
 //     }
-// };
+// }
 
 exports.delete = async (req, res, next) => {
-    console.log('controllers'+req.params.id)
-
     try{
-        const [deleteUsers] = await Users.delete(req.params.id);
+        const [deleteProducts] = await Products.delete(req.params.id)
         res.status(200).json({
             "message": "User deleted sucessfully."
-        });
+        })
     } 
     catch (err){
         if(!err.statusCode){
-            err.statusCode = 500;
+            err.statusCode = 500
         }
-        next(err);
+        next(err)
     }
-};
+}

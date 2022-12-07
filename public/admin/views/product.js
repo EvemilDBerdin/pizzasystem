@@ -1,3 +1,4 @@
+
 class product {
     static async get() {
         let str = ''
@@ -33,7 +34,7 @@ class product {
                                 </thead> 
                                 <tbody>`
 
-        let res = await fetch('http://localhost:8080/product', {
+        let res = await fetch('http://localhost:9000/product', {
             headers: {
                 "Content-Type": "application/json"
             },
@@ -46,7 +47,7 @@ class product {
                                             <td>${data[i].name}</td> 
                                             <td>${data[i].price}</td> 
                                             <td>${data[i].description}</td> 
-                                            <td><button>Edit</button><button>Delete</button></td> 
+                                            <td><button type="button" data-helper="${data[i].id}" class="edit-user">Edit</button><button type="button" data-helper="${data[i].id}" class="delete-user">Delete</button></td>
                                         </tr>`
             }
         })

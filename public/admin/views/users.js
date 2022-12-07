@@ -36,7 +36,7 @@ class users {
                                         </tr>
                                     </thead> 
                                     <tbody>`
-        let res = await fetch('http://localhost:8080/', {
+        let res = await fetch('http://localhost:9000/users', {
             headers: {
                 "Content-Type": "application/json"
             },
