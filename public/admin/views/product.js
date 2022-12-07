@@ -26,30 +26,39 @@ class product {
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Price</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead> 
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div> 
-                <div class="card"></div>
+                                <tbody>`
+
+        let res = await fetch('http://localhost:8080/product', {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: "GET"
+        }).then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            for (let i = 0; i < data.length; i++) {
+                str += `<tr>
+                                            <td>${data[i].name}</td> 
+                                            <td>${data[i].price}</td> 
+                                            <td>${data[i].description}</td> 
+                                            <td><button>Edit</button><button>Delete</button></td> 
+                                        </tr>`
+            }
+        })
+
+        str += `</tbody>
+                </table>
             </div>
-            </div>`
+        </div>
+        </div> 
+        <div class="card"></div>
+        </div>
+        </div>`
         return str
     }
 }

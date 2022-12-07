@@ -10,7 +10,7 @@ class users {
                             </ol>
                         </div>
                         <div class="col-md-7 align-self-center text-right d-none d-md-block">
-                            <button type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i>Add Customer</button>
+                            <button type="button" data-toggle="modal" data-target="#addCustomerModal" class="btn btn-info"><i class="fa fa-plus-circle"></i>Add Customer</button>
                         </div> 
                     </div > 
             <div class="row">
@@ -32,40 +32,43 @@ class users {
                                             <th>Contact</th>
                                             <th>Image</th>
                                             <th>Date Created</th>
-                                            <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead> 
                                     <tbody>`
-
-        let tmp = `</tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="card"></div>
-                </div>
-            </div>`
-
-        fetch('http://127.0.0.1:9000/user', {
+        let res = await fetch('http://localhost:8080/', {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                "username": name.value.replace("\"", ""),
-                "password": md5(password.value.replace("\"", "")),
-                "email": email.value.replace("\"", "")
-            }),
-            method: "POST"
+            method: "GET"
         }).then(function (response) {
             return response.json();
-        }).then(function (data) {
-            alert(data.message);
-            name.value = "";
-            password.value = "";
-            email.value = "";
+        }).then(function (data) { 
+            for(let i=0; i<data.length; i++){
+                str += `<tr>
+                    <td>${data[i].firstname}</td>
+                    <td>${data[i].lastname}</td>
+                    <td>${data[i].email}</td>
+                    <td>${data[i].age}</td>
+                    <td>${data[i].address}</td>
+                    <td>${data[i].contact}</td>
+                    <td>${data[i].user_image}</td>
+                    <td>${data[i].date_created}</td>
+                    <td><button type="button" data-helper="${data[i].userid}" class="edit-user">Edit</button><button type="button" data-helper="${data[i].userid}" class="delete-user">Delete</button></td>
+                </tr>`
+            }
         })
+        
+        str += `</tbody>
+                </table>
+            </div>
+        </div>
+        </div> 
+        <div class="card"></div>
+        </div>
+        </div>`
         return str
-    }
+    } 
 }
 
 export default users

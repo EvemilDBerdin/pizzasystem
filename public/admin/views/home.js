@@ -1,5 +1,4 @@
 class home {
-
     static async get() {
         let str =  ''
         str += `<div class="row page-titles">
