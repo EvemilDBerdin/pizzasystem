@@ -1,4 +1,6 @@
-class users {
+
+
+class users { 
     static async get() {
         let str = ''
         str += `<div class="row page-titles" >
@@ -29,14 +31,13 @@ class users {
                                             <th>Email</th>
                                             <th>Age</th>
                                             <th>Address</th>
-                                            <th>Contact</th>
-                                            <th>Image</th>
+                                            <th>Contact</th>  
                                             <th>Date Created</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead> 
                                     <tbody>`
-        let res = await fetch('http://localhost:9000/users', {
+        let res = await fetch( 'http://localhost:9000/' + 'users', {
             headers: {
                 "Content-Type": "application/json"
             },
@@ -51,8 +52,7 @@ class users {
                     <td>${data[i].email}</td>
                     <td>${data[i].age}</td>
                     <td>${data[i].address}</td>
-                    <td>${data[i].contact}</td>
-                    <td>${data[i].user_image}</td>
+                    <td>${data[i].contact}</td>  
                     <td>${data[i].date_created}</td>
                     <td><button type="button" data-helper="${data[i].userid}" class="edit-user">Edit</button><button type="button" data-helper="${data[i].userid}" class="delete-user">Delete</button></td>
                 </tr>`
@@ -70,5 +70,4 @@ class users {
         return str
     } 
 }
-
 export default users

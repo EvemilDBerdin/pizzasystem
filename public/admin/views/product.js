@@ -11,7 +11,7 @@ class product {
                         </ol>
                     </div>
                     <div class="col-md-7 align-self-center text-right d-none d-md-block">
-                        <button type="button" class="btn btn-info"><i class="fa fa-plus-circle"></i>Add Product</button>
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addProductModal"><i class="fa fa-plus-circle"></i>Add Product</button>
                     </div> 
                 </div > 
             <div class="row">
@@ -47,7 +47,7 @@ class product {
                                             <td>${data[i].name}</td> 
                                             <td>${data[i].price}</td> 
                                             <td>${data[i].description}</td> 
-                                            <td><button type="button" data-helper="${data[i].id}" class="edit-user">Edit</button><button type="button" data-helper="${data[i].id}" class="delete-user">Delete</button></td>
+                                            <td><button type="button" data-helper="${data[i].id}" class="edit-product">Edit</button><button type="button" data-helper="${data[i].id}" class="delete-product">Delete</button></td>
                                         </tr>`
             }
         })

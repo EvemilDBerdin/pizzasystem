@@ -8,10 +8,11 @@ module.exports = class Products {
         return con.execute(`SELECT * FROM tbl_product WHERE id="${id}"`);
     }
     static post(params){
-        // return con.execute(`INSERT INTO user (username, password, email) VALUES("${params.username}", "${params.password}", "${params.email}")`); 
+        let status = 0
+        return con.execute(`INSERT INTO tbl_product (name, price, description, status) VALUES("${params.name}", "${params.price}", "${params.description}", ${status})`); 
     }
     static update(params){
-        // return con.execute(`UPDATE user SET username="${params.username}", password="${params.password}", email="${params.email}" WHERE id="${params.id}"`);
+        return con.execute(`UPDATE tbl_product SET name="${params.name}", price="${params.price}", description="${params.description}" WHERE id="${params.id}"`);
     }
     static delete(id){
         return con.execute(`DELETE from tbl_product WHERE id="${id}"`);

@@ -7,63 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>AdminWrap - Easy to Customize Bootstrap 4 Admin Template</title>
+    <title>Login Pizza Web System</title>
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="http://localhost/portfolio/pizzawebapp/public/assets/uploads/index.ico">
     <link href="http://localhost/portfolio/pizzawebapp/public/assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://localhost/portfolio/pizzawebapp/public/assets/css/pages/login-register-lock.css" rel="stylesheet">
-    <link href="http://localhost/portfolio/pizzawebapp/public/assets/css/style.css" rel="stylesheet
      <link href="http://localhost/portfolio/pizzawebapp/public/assets/css/colors/default.css" id="theme" rel="stylesheet">  -->
 </head>
 
 <body>
-    <div class="preloader">
-        <div class="loader">
-            <div class="loader__figure"></div>
-            <p class="loader__label">Admin Wrap</p>
-        </div>
-    </div>
     <section id="wrapper" class="login-register login-sidebar">
         <div class="login-box card">
             <div class="card-body">
-                <form class="form-horizontal form-material" id="loginform" action="index.html">
+                <form class="form-horizontal form-material" id="loginform">
                     <a href="javascript:void(0)" class="text-center db">
-                        <img src="http://localhost:8080/portfolio/pizzawebapp/public/assets/uploads/evemilberdin.png" alt="Home" />
+                        <img src="http://localhost:8080/portfolio/pizzawebapp/public/assets/uploads/evemilberdin.png"
+                            alt="Home" />
                         <br />
-                        <img src="http://localhost/portfolio/pizzawebapp/public/assets/uploads/evemilberdin.png" alt="Home" />
+                        <img src="http://localhost/portfolio/pizzawebapp/public/assets/uploads/evemilberdin.png"
+                            alt="Home" />
                     </a>
                     <div class="form-group m-t-40">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Username">
+                            <input class="form-control" type="text" required="" name="email" placeholder="Enter Email">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <div class="checkbox checkbox-primary pull-left p-t-0">
-                                <input id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue">
-                                <label for="checkbox-signup"> Remember me </label>
-                            </div>
-                            <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i
-                                    class="fa fa-lock m-r-5"></i> Forgot pwd?</a>
+                            <input class="form-control" type="password" required="" name="password"
+                                placeholder="Enter Password">
                         </div>
                     </div>
                     <div class="form-group text-center m-t-20">
                         <div class="col-xs-12">
                             <button class="btn btn-info btn-lg btn-block text-uppercase btn-rounded" type="submit">Log
                                 In</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
-                            <div class="social"><a href="javascript:void(0)" class="btn  btn-facebook"
-                                    data-toggle="tooltip" title="Login with Facebook"> <i aria-hidden="true"
-                                        class="fab fa-facebook"></i> </a> <a href="javascript:void(0)"
-                                    class="btn btn-googleplus" data-toggle="tooltip" title="Login with Google"> <i
-                                        aria-hidden="true" class="fab fa-google-plus-g"></i> </a> </div>
                         </div>
                     </div>
                     <div class="form-group m-b-0">
@@ -74,28 +51,42 @@
                         </div>
                     </div>
                 </form>
-                <form class="form-horizontal" id="recoverform" action="index.html">
-                    <div class="form-group ">
-                        <div class="col-xs-12">
-                            <h3>Recover Password</h3>
-                            <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
-                        </div>
-                    </div>
-                    <div class="form-group ">
-                        <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group text-center m-t-20">
-                        <div class="col-xs-12">
-                            <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light"
-                                type="submit">Reset</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
-    </section> 
-    <script src="./assets/loadCustomFile.js"></script>  
+    </section>
+    <script src="http://localhost:8080/portfolio/pizzawebapp/public/assets/node_modules/jquery/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./assets/loadCustomFile.js"></script>
+    <script>
+        $('#loginform').submit((e) => {
+            e.preventDefault()
+            let data = {};
+            let formData = new FormData(e.target);
+            for (let key of formData.keys()) {
+                data[key] = formData.get(key);
+            }
+            fetch('http://localhost:9000/auth', { headers: { "Content-Type": "application/json" }, method: "POST", body: JSON.stringify(data), }).then((res) => { return res.json() }).then((res) => { 
+                if (res.message != undefined) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'You have successfully login',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }).then((res) => {
+                        window.location.href = './admin'
+                    })
+                }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: res.error, 
+                    })
+                } 
+            })
+        })
+    </script>
 </body>
+
 </html>
