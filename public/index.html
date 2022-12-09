@@ -8,10 +8,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Login Pizza Web System</title>
-    <!-- <link rel="icon" type="image/png" sizes="16x16" href="http://localhost/portfolio/pizzawebapp/public/assets/uploads/index.ico">
-    <link href="http://localhost/portfolio/pizzawebapp/public/assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://localhost/portfolio/pizzawebapp/public/assets/css/pages/login-register-lock.css" rel="stylesheet">
-     <link href="http://localhost/portfolio/pizzawebapp/public/assets/css/colors/default.css" id="theme" rel="stylesheet">  -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="http://localhost/portfolio/pizzawebapp/public/admin/assets/uploads/index.ico">
+    <link href="http://localhost/portfolio/pizzawebapp/public/admin/assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost/portfolio/pizzawebapp/public/admin/assets/css/pages/login-register-lock.css" rel="stylesheet">
+     <link href="http://localhost/portfolio/pizzawebapp/public/admin/assets/css/colors/default.css" id="theme" rel="stylesheet">  -->
 </head>
 
 <body>
@@ -20,10 +20,10 @@
             <div class="card-body">
                 <form class="form-horizontal form-material" id="loginform">
                     <a href="javascript:void(0)" class="text-center db">
-                        <img src="http://localhost:8080/portfolio/pizzawebapp/public/assets/uploads/evemilberdin.png"
+                        <img src="http://localhost/portfolio/pizzawebapp/public/admin/assets/uploads/evemilberdin.png"
                             alt="Home" />
                         <br />
-                        <img src="http://localhost/portfolio/pizzawebapp/public/assets/uploads/evemilberdin.png"
+                        <img src="http://localhost/portfolio/pizzawebapp/public/admin/assets/uploads/evemilberdin.png"
                             alt="Home" />
                     </a>
                     <div class="form-group m-t-40">
@@ -46,7 +46,7 @@
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
                             Don't have an account? <a
-                                href="http://localhost:8080/portfolio/pizzawebapp/public/register.html"
+                                href="http://localhost/portfolio/pizzawebapp/public/register.html"
                                 class="text-primary m-l-5"><b>Sign Up</b></a>
                         </div>
                     </div>
@@ -54,9 +54,9 @@
             </div>
         </div>
     </section>
-    <script src="http://localhost:8080/portfolio/pizzawebapp/public/assets/node_modules/jquery/jquery.min.js"></script>
+    <script src="http://localhost/portfolio/pizzawebapp/public/admin/assets/node_modules/jquery/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./assets/loadCustomFile.js"></script>
+    <script src="./admin/assets/loadCustomFile.js"></script>
     <script>
         $('#loginform').submit((e) => {
             e.preventDefault()
@@ -66,24 +66,25 @@
                 data[key] = formData.get(key);
             }
             fetch('http://localhost:9000/auth', { headers: { "Content-Type": "application/json" }, method: "POST", body: JSON.stringify(data), }).then((res) => { return res.json() }).then((res) => { 
-                if (res.message != undefined) {
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'You have successfully login',
-                        showConfirmButton: false,
-                        timer: 1500
-                    }).then((res) => {
-                        window.location.href = './admin'
-                    })
-                }
-                else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: res.error, 
-                    })
-                } 
+                // console.log(res.type)
+                // if (res.type < 2) {
+                //     Swal.fire({
+                //         position: 'top-end',
+                //         icon: 'success',
+                //         title: res.message,
+                //         showConfirmButton: false,
+                //         timer: 1500
+                //     }).then((res) => {
+                //         window.location.href = './admin'
+                //     })
+                // }
+                // else {
+                //     Swal.fire({
+                //         icon: 'error',
+                //         title: 'Oops...',
+                //         text: res.message, 
+                //     })
+                // } 
             })
         })
     </script>

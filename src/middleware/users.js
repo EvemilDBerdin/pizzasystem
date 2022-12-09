@@ -1,11 +1,6 @@
 const { sign, verify } = require('jsonwebtoken')
 
-const createToken = (user) => { 
-    let data = {}
-    for (let key of user) {
-        data['email'] = key.email
-        data['userid'] = key.userid
-    } 
+const createToken = (data) => {
     const accessToken = sign({ email: data.email, userid: data.userid }, "jwtsecretplschange")
     return accessToken
 }
@@ -23,4 +18,7 @@ const validateToken = (req, res, next) => {
         return res.status(400).json({ error: err })
     }
 }
-module.exports = { createToken, validateToken }
+
+const storeSession = {}
+
+module.exports = { createToken, validateToken, storeSession }
