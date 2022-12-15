@@ -1,24 +1,33 @@
 const { sign, verify } = require('jsonwebtoken')
+require('dotenv').config()  
 
-const createToken = (data) => {
-    const accessToken = sign({ email: data.email, userid: data.userid }, "jwtsecretplschange")
+const createToken = async (res) => { 
+    let data = {}
+    data['email'] = res.email
+    data['password'] = res.password   
+    const accessToken = sign(JSON.stringify({data}), "test" )
     return accessToken
 }
 
-const validateToken = (req, res, next) => {
-    const accessToken = req.cookies['access-token']
-    if (!accessToken) return res.status(400).json({ error: "User not Authenticated!" })
-    try {
-        const validToken = verify(accessToken, "jwtsecretplschange")
-        if (validToken) {
-            req.authenticated = true
-            return next()
-        }
-    } catch (err) {
-        return res.status(400).json({ error: err })
-    }
+const validateToken = async (req, res, next) => {  
+    // let cookie = req.headers.cookie?.split('=')[1]; 
+    // console.log(req.headers.cookie)
+    // console.log(req.cookie['authorization'])
+    console.log(req.headers.cookie)
+    console.log(req.signedCookies)
+    let test = JSON.stringify(req.cookie)
+    console.log(test) 
+    // if (!cookie) return res.status(400).json({ error: "User not Authenticated!" })
+    // try {  
+    //     const validToken = verify(cookie, "test") 
+    //     if (validToken) { 
+    //         req.authenticated = true
+    //         return next(); 
+    //     }
+    // } catch (err) {
+    //     return res.status(400).json({ jsonerror: err })
+    // } 
 }
 
-const storeSession = {}
 
-module.exports = { createToken, validateToken, storeSession }
+module.exports = { createToken, validateToken }

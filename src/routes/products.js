@@ -1,11 +1,12 @@
 var productsController = require('../controllers/products')
 var express = require('express')
 var productsRouter = express.Router()
+const { validateToken } = require('../middleware/users') 
 
-productsRouter.get("/", productsController.get) // Get 
-productsRouter.get("/:id", productsController.getId) // Get id
-productsRouter.post("/", productsController.post) // Add 
-productsRouter.put('/', productsController.update) // Update 
-productsRouter.delete('/:id', productsController.delete) // Delete 
+productsRouter.get("/", validateToken, productsController.get) // Get 
+productsRouter.get("/:id", validateToken, productsController.getId) // Get id
+productsRouter.post("/", validateToken, productsController.post) // Add 
+productsRouter.put('/', validateToken, productsController.update) // Update 
+productsRouter.delete('/:id', validateToken, productsController.delete) // Delete 
 
 module.exports = productsRouter

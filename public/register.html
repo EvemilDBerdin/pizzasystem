@@ -9,18 +9,18 @@
     <meta name="author" content="">
 
     <link rel="icon" type="image/png" sizes="16x16"
-        href="http://localhost/portfolio/pizzawebapp/public/admin/assets/uploads/index.ico">
+        href="http://localhost:8080/portfolio/pizzawebapp/public/admin/assets/uploads/index.ico">
     <title>AdminWrap - Easy to Customize Bootstrap 4 Admin Template</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/adminwrap/" />
 
-    <link href="http://localhost/portfolio/pizzawebapp/public/admin/assets/node_modules/bootstrap/css/bootstrap.min.css"
+    <link href="http://localhost:8080/portfolio/pizzawebapp/public/admin/assets/node_modules/bootstrap/css/bootstrap.min.css"
         rel="stylesheet">
-    <link href="http://localhost/portfolio/pizzawebapp/public/admin/assets/css/pages/login-register-lock.css"
+    <link href="http://localhost:8080/portfolio/pizzawebapp/public/admin/assets/css/pages/login-register-lock.css"
         rel="stylesheet">
-    <link href="http://localhost/portfolio/pizzawebapp/public/admin/assets/css/style.css" rel="stylesheet">
+    <link href="http://localhost:8080/portfolio/pizzawebapp/public/admin/assets/css/style.css" rel="stylesheet">
 
 
-    <link href="http://localhost/portfolio/pizzawebapp/public/admin/assets/css/colors/default.css" id="theme"
+    <link href="http://localhost:8080/portfolio/pizzawebapp/public/admin/assets/css/colors/default.css" id="theme"
         rel="stylesheet">
 </head>
 
@@ -32,31 +32,31 @@
                     <h3 class="box-title m-t-40 m-b-0">Register Now</h3><small>Create your account and enjoy</small>
                     <div class="form-group">
                         <label for="firstname" class="control-label">firstname</label>
-                        <input type="text" class="form-control" name="firstname">
+                        <input required="required" type="text" class="form-control" name="firstname">
                     </div>
                     <div class="form-group">
                         <label for="lastname" class="control-label">lastname</label>
-                        <input type="text" class="form-control" name="lastname">
+                        <input required="required" type="text" class="form-control" name="lastname">
                     </div>
                     <div class="form-group">
                         <label for="email" class="control-label">email</label>
-                        <input type="text" class="form-control" name="email">
+                        <input required="required" type="text" class="form-control" name="email">
                     </div>
                     <div class="form-group">
                         <label for="age" class="control-label">age</label>
-                        <input type="text" class="form-control" name="age">
+                        <input required="required" type="text" class="form-control" name="age">
                     </div>
                     <div class="form-group">
                         <label for="address" class="control-label">address</label>
-                        <input type="text" class="form-control" name="address">
+                        <input required="required" type="text" class="form-control" name="address">
                     </div>
                     <div class="form-group">
                         <label for="contact" class="control-label">contact</label>
-                        <input type="text" class="form-control" name="contact">
+                        <input required="required" type="text" class="form-control" name="contact">
                     </div> 
                     <div class="form-group">
                         <label for="password" class="control-label">password</label>
-                        <input type="password" class="form-control" name="password">
+                        <input required="required" type="password" class="form-control" name="password">
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
@@ -74,7 +74,7 @@
                     </div>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                            <p>Already have an account? <a href="http://localhost/portfolio/pizzawebapp/public/"
+                            <p>Already have an account? <a href="http://localhost:8080/portfolio/pizzawebapp/public/"
                                     class="text-info m-l-5"><b>Sign In</b></a></p>
                         </div>
                     </div>
@@ -82,10 +82,10 @@
             </div>
         </div>
     </section>   
-    <!-- <script src="http://localhost/portfolio/pizzawebapp/public/admin/assets/js/custom.min.js"></script> -->
-    <script src="http://localhost/portfolio/pizzawebapp/public/admin/assets/node_modules/jquery/jquery.min.js"></script>
-    <script src="http://localhost/portfolio/pizzawebapp/public/admin/assets/node_modules/bootstrap/js/popper.min.js"></script>
-    <script src="http://localhost/portfolio/pizzawebapp/public/admin/assets/node_modules/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="http://localhost:8080/portfolio/pizzawebapp/public/admin/assets/js/custom.min.js"></script> -->
+    <script src="http://localhost:8080/portfolio/pizzawebapp/public/admin/assets/node_modules/jquery/jquery.min.js"></script>
+    <script src="http://localhost:8080/portfolio/pizzawebapp/public/admin/assets/node_modules/bootstrap/js/popper.min.js"></script>
+    <script src="http://localhost:8080/portfolio/pizzawebapp/public/admin/assets/node_modules/bootstrap/js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">  
         $('#registerform').submit((e) => {
@@ -103,7 +103,7 @@
                     showConfirmButton: false,
                     timer: 1500
                 }).then(() => {
-                    window.location.href = './index.html'
+                    // window.location.href = './index.html'
                 })
             })
         })
